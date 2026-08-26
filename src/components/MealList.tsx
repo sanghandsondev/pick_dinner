@@ -29,11 +29,6 @@ export default function MealList({ meals, highlightedId }: MealListProps) {
                   </span>
                 ))}
               </span>
-              {active && (
-                <span className="meal-card__badge" aria-label="Selected">
-                  ✓
-                </span>
-              )}
             </li>
           );
         })}

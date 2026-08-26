@@ -1,8 +1,16 @@
 [
-  { "id": "m1", "name": "Khoai tây luộc + ức gà áp chảo", "emojis": ["🥔", "🍗"] },
+  {
+    "id": "m1",
+    "name": "Khoai tây luộc + ức gà áp chảo",
+    "emojis": ["🥔", "🍗"]
+  },
   { "id": "m2", "name": "Cơm tấm sườn nướng", "emojis": ["🍚", "🍖"] },
   { "id": "m3", "name": "Bún bò Huế", "emojis": ["🍜", "🥩"] },
-  { "id": "m4", "name": "Salad cá ngừ + trứng luộc", "emojis": ["🐟", "🥚", "🥗"] },
+  {
+    "id": "m4",
+    "name": "Salad cá ngừ + trứng luộc",
+    "emojis": ["🐟", "🥚", "🥗"]
+  },
   { "id": "m5", "name": "Mì Ý sốt bò bằm", "emojis": ["🍝", "🐄"] },
   { "id": "m6", "name": "Trứng gà + ức gà", "emojis": ["🥚", "🍗"] },
   { "id": "m7", "name": "Cháo gà + hành lá", "emojis": ["🍲", "🍗", "🌿"] },

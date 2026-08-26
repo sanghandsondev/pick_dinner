@@ -26,28 +26,26 @@ export default function App() {
   };
 
   return (
-    <div className="app-shell">
-      <main className="app-main">
-        <DateHeader date={today} />
-
-        {dealt && (
-          <section className="deal-banner" aria-live="polite">
-            <div className="deal-banner__label">Tonight's dinner</div>
-            <div className="deal-banner__meal">
-              <span>{dealMeal?.name}</span>
-              <span className="deal-banner__emojis" aria-hidden>
-                {dealMeal?.emojis.map((e, i) => (
-                  <span key={i}>{e}</span>
-                ))}
-              </span>
-            </div>
-          </section>
-        )}
-
-        <MealList meals={MEALS} highlightedId={dealMeal?.id ?? null} />
-      </main>
-
-      <PickDinnerButton disabled={dealt} onClick={openModal} />
+    <div className={`app-shell${dealt ? " app-shell--dealt" : ""}`}>
+      {dealt ? (
+        <section className="deal-hero" aria-live="polite">
+          <div className="deal-hero__label">Tonight's dinner</div>
+          <div className="deal-hero__name">{dealMeal?.name}</div>
+          <div className="deal-hero__emojis" aria-hidden>
+            {dealMeal?.emojis.map((e, i) => (
+              <span key={i}>{e}</span>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <>
+          <main className="app-main">
+            <DateHeader date={today} />
+            <MealList meals={MEALS} highlightedId={null} />
+          </main>
+          <PickDinnerButton disabled={false} onClick={openModal} />
+        </>
+      )}
 
       <PickDinnerModal
         open={modalOpen}
