@@ -1,43 +1,41 @@
-const CACHE = 'pick-dinner-v1';
-const BASE = '/pick_dinner';
+const CACHE = "pick-dinner-v1";
+const BASE = "/pick_dinner";
 
 // Các URL cần cache khi cài app
-const PRECACHE = [
-  BASE + '/',
-  BASE + '/index.html',
-];
+const PRECACHE = [BASE + "/", BASE + "/index.html"];
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(PRECACHE))
-  );
+self.addEventListener("install", (event) => {
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(PRECACHE)));
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((k) => k !== CACHE)
-          .map((k) => caches.delete(k))
-      )
-    )
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)),
+        ),
+      ),
   );
   self.clients.claim();
 });
 
 // Network-first cho navigate, cache-first cho assets
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
   // Bỏ qua các request không phải GET hoặc không cùng origin
-  if (request.method !== 'GET' || !url.origin.includes(self.location.origin.split('//')[1])) {
+  if (
+    request.method !== "GET" ||
+    !url.origin.includes(self.location.origin.split("//")[1])
+  ) {
     return;
   }
 
-  if (request.mode === 'navigate') {
+  if (request.mode === "navigate") {
     // Navigation: thử network trước, fallback cache
     event.respondWith(
       fetch(request)
@@ -46,7 +44,7 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE).then((c) => c.put(request, clone));
           return res;
         })
-        .catch(() => caches.match(BASE + '/index.html'))
+        .catch(() => caches.match(BASE + "/index.html")),
     );
     return;
   }
@@ -59,6 +57,6 @@ self.addEventListener('fetch', (event) => {
         return res;
       });
       return cached || fetchPromise;
-    })
+    }),
   );
 });
