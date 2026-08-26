@@ -1,10 +1,10 @@
-import { useMemo, useState } from 'react';
-import mealsData from './data/meals.json';
-import type { Meal } from './types';
-import DateHeader from './components/DateHeader';
-import MealList from './components/MealList';
-import PickDinnerButton from './components/PickDinnerButton';
-import PickDinnerModal from './components/PickDinnerModal';
+import { useMemo, useState } from "react";
+import mealsData from "./data/meals.json";
+import type { Meal } from "./types";
+import DateHeader from "./components/DateHeader";
+import MealList from "./components/MealList";
+import PickDinnerButton from "./components/PickDinnerButton";
+import PickDinnerModal from "./components/PickDinnerModal";
 
 const MEALS: Meal[] = mealsData as Meal[];
 
@@ -35,7 +35,7 @@ export default function App() {
             <div className="deal-banner__label">Tonight's dinner</div>
             <div className="deal-banner__meal">
               <span className="deal-banner__emoji" aria-hidden>
-                {dealMeal?.emoji ?? '🍽️'}
+                {dealMeal?.emoji ?? "🍽️"}
               </span>
               <span>{dealMeal?.name}</span>
             </div>

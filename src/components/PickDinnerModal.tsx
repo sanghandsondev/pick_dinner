@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import type { Meal } from '../types';
+import { useEffect, useRef, useState } from "react";
+import type { Meal } from "../types";
 
 interface PickDinnerModalProps {
   open: boolean;
@@ -87,10 +87,10 @@ export default function PickDinnerModal({
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && !spinning) onClose();
+      if (e.key === "Escape" && !spinning) onClose();
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open, spinning, onClose]);
 
   if (!open) return null;
@@ -108,22 +108,22 @@ export default function PickDinnerModal({
       }}
     >
       <div
-        className={`modal-card${spinning ? ' modal-card--spinning' : ''}`}
+        className={`modal-card${spinning ? " modal-card--spinning" : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-card__eyebrow">
-          {spinning ? 'Picking…' : 'Your dinner'}
+          {spinning ? "Picking…" : "Your dinner"}
         </div>
 
         <div className="modal-card__stage" aria-live="polite">
           <div className="modal-card__emoji" aria-hidden>
-            {spinning ? '🎰' : (shownMeal?.emoji ?? '🍽️')}
+            {spinning ? "🎰" : (shownMeal?.emoji ?? "🍽️")}
           </div>
           <div
-            className={`modal-card__meal${spinning ? ' modal-card__meal--rolling' : ''}`}
+            className={`modal-card__meal${spinning ? " modal-card__meal--rolling" : ""}`}
             key={shownMeal?.id}
           >
-            {shownMeal?.name ?? '—'}
+            {shownMeal?.name ?? "—"}
           </div>
           {spinning && <div className="modal-card__spinner" aria-hidden />}
         </div>

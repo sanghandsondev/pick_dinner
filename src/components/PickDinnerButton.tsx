@@ -11,7 +11,7 @@ export default function PickDinnerButton({
     <div className="pick-cta">
       <button
         type="button"
-        className={`pick-cta__btn${disabled ? ' pick-cta__btn--disabled' : ''}`}
+        className={`pick-cta__btn${disabled ? " pick-cta__btn--disabled" : ""}`}
         onClick={onClick}
         disabled={disabled}
         aria-disabled={disabled}
@@ -20,7 +20,7 @@ export default function PickDinnerButton({
           🎲
         </span>
         <span className="pick-cta__label">
-          {disabled ? 'Dinner locked in' : 'Pick Dinner'}
+          {disabled ? "Dinner locked in" : "Pick Dinner"}
         </span>
       </button>
     </div>

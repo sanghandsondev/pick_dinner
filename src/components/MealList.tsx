@@ -1,4 +1,4 @@
-import type { Meal } from '../types';
+import type { Meal } from "../types";
 
 interface MealListProps {
   meals: Meal[];
@@ -19,10 +19,10 @@ export default function MealList({ meals, highlightedId }: MealListProps) {
           return (
             <li
               key={meal.id}
-              className={`meal-card${active ? ' meal-card--active' : ''}`}
+              className={`meal-card${active ? " meal-card--active" : ""}`}
             >
               <span className="meal-card__emoji" aria-hidden>
-                {meal.emoji ?? '🍽️'}
+                {meal.emoji ?? "🍽️"}
               </span>
               <span className="meal-card__name">{meal.name}</span>
               {active && (
