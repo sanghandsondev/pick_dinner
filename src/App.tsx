@@ -6,19 +6,46 @@ import MealList from "./components/MealList";
 import PickDinnerButton from "./components/PickDinnerButton";
 import PickDinnerModal from "./components/PickDinnerModal";
 import HistoryModal from "./components/HistoryModal";
-import { usePickHistory } from "./hooks/usePickHistory";
+import { usePickHistory, type HistoryEntry } from "./hooks/usePickHistory";
 
 const MEALS: Meal[] = mealsData as Meal[];
+
+function isSameLocalDay(a: Date, b: Date): boolean {
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
+}
+
+function entryToMeal(entry: HistoryEntry): Meal {
+  return {
+    id: entry.mealId,
+    name: entry.mealName,
+    emojis: entry.emojis,
+    category: entry.category,
+  };
+}
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
-  const [dealMeal, setDealMeal] = useState<Meal | null>(null);
   const [category, setCategory] = useState<MealCategory>("rice");
   const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
   const { history, addEntry, clearHistory } = usePickHistory();
 
   const today = useMemo(() => new Date(), []);
+
+  // Nếu entry lịch sử mới nhất có ngày = hôm nay → đã deal hôm nay.
+  const todayEntry = useMemo(() => {
+    if (history.length === 0) return null;
+    const latest = history[0];
+    const dealtAt = new Date(latest.dealtAt);
+    if (isNaN(dealtAt.getTime())) return null;
+    return isSameLocalDay(dealtAt, today) ? latest : null;
+  }, [history, today]);
+
+  const dealMeal: Meal | null = todayEntry ? entryToMeal(todayEntry) : null;
   const dealt = dealMeal !== null;
 
   const mealsByCategory = useMemo(
@@ -38,9 +65,8 @@ export default function App() {
   };
 
   const handleDeal = (meal: Meal) => {
-    setDealMeal(meal);
-    setModalOpen(false);
     addEntry(meal);
+    setModalOpen(false);
   };
 
   const toggleExclude = (id: string) => {
