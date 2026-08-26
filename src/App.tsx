@@ -88,7 +88,6 @@ export default function App() {
         />
         {dealt ? (
           <section className="deal-hero" aria-live="polite">
-            <div className="deal-hero__label">Tonight's dinner</div>
             <div className="deal-hero__name">{dealMeal?.name}</div>
             <div className="deal-hero__emojis" aria-hidden>
               {dealMeal?.emojis.map((e, i) => (
