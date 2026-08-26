@@ -9,6 +9,14 @@ if ("serviceWorker" in navigator) {
       // SW registration failed silently
     });
   });
+
+  // Khi SW mới nắm quyền (sau khi bundle JS đã đổi), reload để load code mới.
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
 }
 
 createRoot(document.getElementById("root")!).render(
