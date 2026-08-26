@@ -5,7 +5,8 @@ interface HistoryModalProps {
   open: boolean;
   entries: HistoryEntry[];
   onClose: () => void;
-  onClear: () => void;
+  onClearToday: () => void;
+  hasTodayEntry: boolean;
 }
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -37,7 +38,8 @@ export default function HistoryModal({
   open,
   entries,
   onClose,
-  onClear,
+  onClearToday,
+  hasTodayEntry,
 }: HistoryModalProps) {
   useEffect(() => {
     if (!open) return;
@@ -94,45 +96,51 @@ export default function HistoryModal({
             </div>
           </div>
         ) : (
-          <>
-            <ul className="history-list">
-              {sorted.map((entry) => {
-                const { day, time } = formatDealtAt(entry.dealtAt);
-                return (
-                  <li key={entry.id} className="history-item">
-                    <div className="history-item__body">
-                      <div className="history-item__name">{entry.mealName}</div>
-                      <div className="history-item__date">
-                        <span>{day}</span>
-                        <span className="history-item__dot" aria-hidden>
-                          •
-                        </span>
-                        <span>{time}</span>
-                      </div>
+          <ul className="history-list">
+            {sorted.map((entry) => {
+              const { day, time } = formatDealtAt(entry.dealtAt);
+              return (
+                <li key={entry.id} className="history-item">
+                  <div className="history-item__body">
+                    <div className="history-item__name">{entry.mealName}</div>
+                    <div className="history-item__date">
+                      <span>{day}</span>
+                      <span className="history-item__dot" aria-hidden>
+                        •
+                      </span>
+                      <span>{time}</span>
                     </div>
-                    <div className="history-item__emojis" aria-hidden>
-                      {entry.emojis.map((e, i) => (
-                        <span key={i}>{e}</span>
-                      ))}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className="history-modal__actions">
-              <button
-                type="button"
-                className="btn btn--secondary history-modal__clear"
-                onClick={() => {
-                  if (confirm("Clear all history?")) onClear();
-                }}
-              >
-                Clear history
-              </button>
-            </div>
-          </>
+                  </div>
+                  <div className="history-item__emojis" aria-hidden>
+                    {entry.emojis.map((e, i) => (
+                      <span key={i}>{e}</span>
+                    ))}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         )}
+
+        <div className="history-modal__actions">
+          <button
+            type="button"
+            className="btn btn--secondary history-modal__clear"
+            onClick={() => {
+              if (
+                confirm(
+                  "Clear today's dinner so you can pick again? This removes today's entry from history.",
+                )
+              ) {
+                onClearToday();
+              }
+            }}
+            disabled={!hasTodayEntry}
+            aria-disabled={!hasTodayEntry}
+          >
+            Clear Today
+          </button>
+        </div>
       </div>
     </div>
   );

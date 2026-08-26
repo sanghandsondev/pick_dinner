@@ -49,7 +49,20 @@ export function usePickHistory() {
     setHistory((prev) => [entry, ...prev].slice(0, LIMIT));
   }, []);
 
-  const clearHistory = useCallback(() => setHistory([]), []);
+  const clearToday = useCallback(() => {
+    const now = new Date();
+    setHistory((prev) =>
+      prev.filter((e) => {
+        const d = new Date(e.dealtAt);
+        if (isNaN(d.getTime())) return true;
+        return !(
+          d.getFullYear() === now.getFullYear() &&
+          d.getMonth() === now.getMonth() &&
+          d.getDate() === now.getDate()
+        );
+      }),
+    );
+  }, []);
 
-  return { history, addEntry, clearHistory };
+  return { history, addEntry, clearToday };
 }

@@ -32,7 +32,7 @@ export default function App() {
   const [historyOpen, setHistoryOpen] = useState(false);
   const [category, setCategory] = useState<MealCategory>("rice");
   const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
-  const { history, addEntry, clearHistory } = usePickHistory();
+  const { history, addEntry, clearToday } = usePickHistory();
 
   const today = useMemo(() => new Date(), []);
 
@@ -125,7 +125,8 @@ export default function App() {
         open={historyOpen}
         entries={history}
         onClose={() => setHistoryOpen(false)}
-        onClear={clearHistory}
+        onClearToday={clearToday}
+        hasTodayEntry={dealt}
       />
     </div>
   );

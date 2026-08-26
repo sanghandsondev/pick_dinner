@@ -1,4 +1,4 @@
-const CACHE = "pick-dinner-v3";
+const CACHE = "pick-dinner-v4";
 const BASE = "/pick_dinner";
 
 // Các URL cần cache khi cài app
