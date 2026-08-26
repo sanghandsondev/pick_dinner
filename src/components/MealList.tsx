@@ -21,10 +21,14 @@ export default function MealList({ meals, highlightedId }: MealListProps) {
               key={meal.id}
               className={`meal-card${active ? " meal-card--active" : ""}`}
             >
-              <span className="meal-card__emoji" aria-hidden>
-                {meal.emoji ?? "🍽️"}
-              </span>
               <span className="meal-card__name">{meal.name}</span>
+              <span className="meal-card__emojis" aria-hidden>
+                {meal.emojis.map((e, i) => (
+                  <span key={i} className="meal-card__emoji">
+                    {e}
+                  </span>
+                ))}
+              </span>
               {active && (
                 <span className="meal-card__badge" aria-label="Selected">
                   ✓

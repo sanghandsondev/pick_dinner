@@ -34,10 +34,12 @@ export default function App() {
           <section className="deal-banner" aria-live="polite">
             <div className="deal-banner__label">Tonight's dinner</div>
             <div className="deal-banner__meal">
-              <span className="deal-banner__emoji" aria-hidden>
-                {dealMeal?.emoji ?? "🍽️"}
-              </span>
               <span>{dealMeal?.name}</span>
+              <span className="deal-banner__emojis" aria-hidden>
+                {dealMeal?.emojis.map((e, i) => (
+                  <span key={i}>{e}</span>
+                ))}
+              </span>
             </div>
           </section>
         )}

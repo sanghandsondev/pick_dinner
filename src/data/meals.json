@@ -1,12 +1,12 @@
 [
-  { "id": "m1", "name": "Khoai tây luộc + ức gà áp chảo", "emoji": "🥔" },
-  { "id": "m2", "name": "Cơm tấm sườn nướng", "emoji": "🍚" },
-  { "id": "m3", "name": "Bún bò Huế", "emoji": "🍜" },
-  { "id": "m4", "name": "Salad cá ngừ + trứng luộc", "emoji": "🥗" },
-  { "id": "m5", "name": "Mì Ý sốt bò bằm", "emoji": "🍝" },
-  { "id": "m6", "name": "Khoai tây luộc + ức gà áp chảo", "emoji": "🥔" },
-  { "id": "m7", "name": "Cơm tấm sườn nướng", "emoji": "🍚" },
-  { "id": "m8", "name": "Bún bò Huế", "emoji": "🍜" },
-  { "id": "m9", "name": "Salad cá ngừ + trứng luộc", "emoji": "🥗" },
-  { "id": "m10", "name": "Mì Ý sốt bò bằm", "emoji": "🍝" }
+  { "id": "m1", "name": "Khoai tây luộc + ức gà áp chảo", "emojis": ["🥔", "🍗"] },
+  { "id": "m2", "name": "Cơm tấm sườn nướng", "emojis": ["🍚", "🍖"] },
+  { "id": "m3", "name": "Bún bò Huế", "emojis": ["🍜", "🥩"] },
+  { "id": "m4", "name": "Salad cá ngừ + trứng luộc", "emojis": ["🐟", "🥚", "🥗"] },
+  { "id": "m5", "name": "Mì Ý sốt bò bằm", "emojis": ["🍝", "🐄"] },
+  { "id": "m6", "name": "Trứng gà + ức gà", "emojis": ["🥚", "🍗"] },
+  { "id": "m7", "name": "Cháo gà + hành lá", "emojis": ["🍲", "🍗", "🌿"] },
+  { "id": "m8", "name": "Cá hồi áp chảo + bông cải", "emojis": ["🐟", "🥦"] },
+  { "id": "m9", "name": "Bánh mì trứng ốp la", "emojis": ["🥖", "🍳"] },
+  { "id": "m10", "name": "Phở gà + quẩy", "emojis": ["🍜", "🍗", "🥖"] }
 ]

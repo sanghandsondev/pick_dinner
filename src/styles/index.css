@@ -95,7 +95,6 @@ button:disabled {
 /* ===== App shell ===== */
 .app-shell {
   min-height: 100dvh;
-  padding-top: calc(var(--safe-top) + 12px);
   padding-left: calc(var(--safe-left) + 16px);
   padding-right: calc(var(--safe-right) + 16px);
   /* để nội dung không bị nút CTA che */
@@ -110,22 +109,34 @@ button:disabled {
   gap: 20px;
 }
 
-/* ===== Date header ===== */
+/* ===== Date header (sticky) ===== */
 .date-header {
-  padding: 8px 4px 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  /* Bleed ra sát mép để backdrop-blur phủ toàn bộ chiều ngang mobile */
+  margin: 0 calc(-1 * (var(--safe-right) + 16px)) 0
+    calc(-1 * (var(--safe-left) + 16px));
+  padding: calc(var(--safe-top) + 12px) calc(var(--safe-right) + 20px) 12px
+    calc(var(--safe-left) + 20px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+  backdrop-filter: saturate(150%) blur(14px);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--blue-100) 60%, transparent);
 }
 
 .date-header__eyebrow {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
   color: var(--blue-600);
   text-transform: uppercase;
 }
 
 .date-header__title {
-  margin: 4px 0 8px;
-  font-size: clamp(28px, 7vw, 34px);
+  margin: 2px 0 8px;
+  font-size: clamp(22px, 6.4vw, 28px);
   font-weight: 700;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, var(--blue-700), var(--blue-500));
@@ -138,12 +149,12 @@ button:disabled {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: 999px;
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   color: var(--ink-700);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -181,14 +192,18 @@ button:disabled {
 .deal-banner__meal {
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px 12px;
   font-size: 20px;
   font-weight: 700;
   line-height: 1.25;
 }
 
-.deal-banner__emoji {
-  font-size: 28px;
+.deal-banner__emojis {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 26px;
+  line-height: 1;
 }
 
 .deal-banner__reset {
@@ -267,24 +282,26 @@ button:disabled {
   transform: translateY(-1px);
 }
 
-.meal-card__emoji {
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: white;
-  box-shadow: var(--shadow-sm);
-  flex: none;
-}
-
 .meal-card__name {
   flex: 1;
   font-size: 15px;
   font-weight: 500;
   color: var(--ink-900);
+  line-height: 1.35;
+}
+
+.meal-card__emojis {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 45%;
+}
+
+.meal-card__emoji {
+  font-size: 22px;
+  line-height: 1;
 }
 
 .meal-card__badge {
@@ -298,6 +315,7 @@ button:disabled {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: none;
 }
 
 /* ===== Pick CTA (floating) ===== */
@@ -423,15 +441,24 @@ button:disabled {
   overflow: hidden;
 }
 
-.modal-card__emoji {
-  font-size: 56px;
-  line-height: 1;
+.modal-card__emojis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
   filter: drop-shadow(0 6px 14px rgba(37, 99, 235, 0.25));
+}
+
+.modal-card__emoji {
+  font-size: 44px;
+  line-height: 1;
   transition: transform 0.3s var(--ease-smooth);
 }
 
 .modal-card--spinning .modal-card__emoji {
   animation: wobble 0.6s ease-in-out infinite;
+  font-size: 56px;
 }
 
 .modal-card__meal {
