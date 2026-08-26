@@ -210,18 +210,8 @@ button:disabled {
 
 .deal-hero__emoji {
   display: inline-block;
-  animation: heroPulse 1.6s var(--ease-smooth) infinite;
+  animation: heroPulse 1.4s var(--ease-smooth) infinite;
   transform-origin: center;
-}
-
-.deal-hero__emoji:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.deal-hero__emoji:nth-child(3) {
-  animation-delay: 0.4s;
-}
-.deal-hero__emoji:nth-child(4) {
-  animation-delay: 0.6s;
 }
 
 /* ===== Meal list ===== */
@@ -240,17 +230,12 @@ button:disabled {
 .meal-list__header {
   flex: none;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   margin-bottom: 8px;
   padding: 2px 6px 10px;
   border-bottom: 1px solid var(--ink-100);
-}
-
-.meal-list__title-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
 }
 
 .meal-list__header h2 {
@@ -258,19 +243,13 @@ button:disabled {
   font-size: 17px;
   font-weight: 700;
   color: var(--ink-900);
-}
-
-.meal-list__count {
-  font-size: 13px;
-  color: var(--ink-500);
-  font-weight: 500;
+  flex: none;
 }
 
 .meal-list__tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  padding: 4px;
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
   background: var(--surface-2);
   border-radius: 999px;
 }
@@ -278,9 +257,8 @@ button:disabled {
 .meal-tab {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
-  padding: 9px 12px;
+  padding: 6px 12px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
@@ -299,9 +277,9 @@ button:disabled {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
   border-radius: 999px;
   background: var(--ink-100);
   color: var(--ink-500);

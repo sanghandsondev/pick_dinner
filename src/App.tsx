@@ -72,9 +72,7 @@ export default function App() {
               category={category}
               onChangeCategory={setCategory}
               homeCount={MEALS.filter((m) => m.category === "home").length}
-              eatOutCount={
-                MEALS.filter((m) => m.category === "eat-out").length
-              }
+              eatOutCount={MEALS.filter((m) => m.category === "eat-out").length}
             />
           </main>
           <PickDinnerButton

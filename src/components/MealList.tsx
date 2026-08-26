@@ -19,15 +19,10 @@ export default function MealList({
   homeCount,
   eatOutCount,
 }: MealListProps) {
-  const activeCount = meals.filter((m) => !excludedIds.has(m.id)).length;
-
   return (
     <section className="meal-list" aria-label="Meal list">
       <div className="meal-list__header">
-        <div className="meal-list__title-row">
-          <h2>Meals</h2>
-          <span className="meal-list__count">{activeCount} items</span>
-        </div>
+        <h2>Meals</h2>
 
         <div
           className="meal-list__tabs"
@@ -41,7 +36,7 @@ export default function MealList({
             className={`meal-tab${category === "home" ? " meal-tab--active" : ""}`}
             onClick={() => onChangeCategory("home")}
           >
-            <span className="meal-tab__label">🏠 Nấu tại nhà</span>
+            <span className="meal-tab__label">Home</span>
             <span className="meal-tab__count">{homeCount}</span>
           </button>
           <button
@@ -51,7 +46,7 @@ export default function MealList({
             className={`meal-tab${category === "eat-out" ? " meal-tab--active" : ""}`}
             onClick={() => onChangeCategory("eat-out")}
           >
-            <span className="meal-tab__label">🥡 Ăn ngoài</span>
+            <span className="meal-tab__label">Eat out</span>
             <span className="meal-tab__count">{eatOutCount}</span>
           </button>
         </div>
