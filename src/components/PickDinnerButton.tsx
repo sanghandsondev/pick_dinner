@@ -20,7 +20,7 @@ export default function PickDinnerButton({
           🎲
         </span>
         <span className="pick-cta__label">
-          {disabled ? 'Đã chốt bữa tối' : 'Pick Dinner'}
+          {disabled ? 'Dinner locked in' : 'Pick Dinner'}
         </span>
       </button>
     </div>

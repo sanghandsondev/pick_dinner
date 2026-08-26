@@ -7,10 +7,10 @@ interface MealListProps {
 
 export default function MealList({ meals, highlightedId }: MealListProps) {
   return (
-    <section className="meal-list" aria-label="Danh sách món ăn">
+    <section className="meal-list" aria-label="Meal list">
       <div className="meal-list__header">
-        <h2>Danh sách món</h2>
-        <span className="meal-list__count">{meals.length} món</span>
+        <h2>Meals</h2>
+        <span className="meal-list__count">{meals.length} items</span>
       </div>
 
       <ul className="meal-list__items">
@@ -26,7 +26,7 @@ export default function MealList({ meals, highlightedId }: MealListProps) {
               </span>
               <span className="meal-card__name">{meal.name}</span>
               {active && (
-                <span className="meal-card__badge" aria-label="Đã chọn">
+                <span className="meal-card__badge" aria-label="Selected">
                   ✓
                 </span>
               )}

@@ -25,10 +25,6 @@ export default function App() {
     setModalOpen(false);
   };
 
-  const handleReset = () => {
-    setDealMeal(null);
-  };
-
   return (
     <div className="app-shell">
       <main className="app-main">
@@ -36,20 +32,13 @@ export default function App() {
 
         {dealt && (
           <section className="deal-banner" aria-live="polite">
-            <div className="deal-banner__label">Tối nay ăn</div>
+            <div className="deal-banner__label">Tonight's dinner</div>
             <div className="deal-banner__meal">
               <span className="deal-banner__emoji" aria-hidden>
                 {dealMeal?.emoji ?? '🍽️'}
               </span>
               <span>{dealMeal?.name}</span>
             </div>
-            <button
-              type="button"
-              className="deal-banner__reset"
-              onClick={handleReset}
-            >
-              Chọn lại
-            </button>
           </section>
         )}
 

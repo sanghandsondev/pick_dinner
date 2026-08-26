@@ -102,7 +102,7 @@ export default function PickDinnerModal({
       className="modal-backdrop"
       role="dialog"
       aria-modal="true"
-      aria-label="Chọn món tối"
+      aria-label="Pick dinner"
       onClick={() => {
         if (!spinning) onClose();
       }}
@@ -112,7 +112,7 @@ export default function PickDinnerModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-card__eyebrow">
-          {spinning ? 'Đang chọn món…' : 'Món được chọn'}
+          {spinning ? 'Picking…' : 'Your dinner'}
         </div>
 
         <div className="modal-card__stage" aria-live="polite">
@@ -135,7 +135,7 @@ export default function PickDinnerModal({
             onClick={onClose}
             disabled={spinning}
           >
-            Ẩn đi
+            Close
           </button>
           <button
             type="button"
