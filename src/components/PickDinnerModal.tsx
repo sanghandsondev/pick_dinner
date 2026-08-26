@@ -111,6 +111,16 @@ export default function PickDinnerModal({
         className={`modal-card${spinning ? " modal-card--spinning" : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
+        <button
+          type="button"
+          className="modal-card__close"
+          onClick={onClose}
+          disabled={spinning}
+          aria-label="Close"
+        >
+          ✕
+        </button>
+
         <div className="modal-card__eyebrow">
           {spinning ? "Picking…" : "Your dinner"}
         </div>
@@ -137,14 +147,6 @@ export default function PickDinnerModal({
         </div>
 
         <div className="modal-card__actions">
-          <button
-            type="button"
-            className="btn btn--ghost"
-            onClick={onClose}
-            disabled={spinning}
-          >
-            Close
-          </button>
           <button
             type="button"
             className="btn btn--secondary"

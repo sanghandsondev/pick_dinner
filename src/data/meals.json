@@ -2,19 +2,85 @@
   {
     "id": "m1",
     "name": "Khoai tây luộc + ức gà áp chảo",
-    "emojis": ["🥔", "🍗"]
+    "emojis": ["🥔", "🍗"],
+    "category": "home"
   },
-  { "id": "m2", "name": "Cơm tấm sườn nướng", "emojis": ["🍚", "🍖"] },
-  { "id": "m3", "name": "Bún bò Huế", "emojis": ["🍜", "🥩"] },
+  {
+    "id": "m2",
+    "name": "Cơm tấm sườn nướng",
+    "emojis": ["🍚", "🍖"],
+    "category": "home"
+  },
+  {
+    "id": "m3",
+    "name": "Bún bò Huế",
+    "emojis": ["🍜", "🥩"],
+    "category": "home"
+  },
   {
     "id": "m4",
     "name": "Salad cá ngừ + trứng luộc",
-    "emojis": ["🐟", "🥚", "🥗"]
+    "emojis": ["🐟", "🥚", "🥗"],
+    "category": "home"
   },
-  { "id": "m5", "name": "Mì Ý sốt bò bằm", "emojis": ["🍝", "🐄"] },
-  { "id": "m6", "name": "Trứng gà + ức gà", "emojis": ["🥚", "🍗"] },
-  { "id": "m7", "name": "Cháo gà + hành lá", "emojis": ["🍲", "🍗", "🌿"] },
-  { "id": "m8", "name": "Cá hồi áp chảo + bông cải", "emojis": ["🐟", "🥦"] },
-  { "id": "m9", "name": "Bánh mì trứng ốp la", "emojis": ["🥖", "🍳"] },
-  { "id": "m10", "name": "Phở gà + quẩy", "emojis": ["🍜", "🍗", "🥖"] }
+  {
+    "id": "m5",
+    "name": "Mì Ý sốt bò bằm",
+    "emojis": ["🍝", "🐄"],
+    "category": "home"
+  },
+  {
+    "id": "m6",
+    "name": "Trứng gà + ức gà",
+    "emojis": ["🥚", "🍗"],
+    "category": "home"
+  },
+  {
+    "id": "m7",
+    "name": "Cháo gà + hành lá",
+    "emojis": ["🍲", "🍗", "🌿"],
+    "category": "home"
+  },
+  {
+    "id": "m8",
+    "name": "Cá hồi áp chảo + bông cải",
+    "emojis": ["🐟", "🥦"],
+    "category": "home"
+  },
+  {
+    "id": "m9",
+    "name": "Bánh mì trứng ốp la",
+    "emojis": ["🥖", "🍳"],
+    "category": "home"
+  },
+  {
+    "id": "m10",
+    "name": "Phở gà + quẩy",
+    "emojis": ["🍜", "🍗", "🥖"],
+    "category": "home"
+  },
+  {
+    "id": "o1",
+    "name": "Mì cay 7 cấp độ",
+    "emojis": ["🌶️", "🍜"],
+    "category": "eat-out"
+  },
+  {
+    "id": "o2",
+    "name": "Cơm rang đùi gà",
+    "emojis": ["🍚", "🍗"],
+    "category": "eat-out"
+  },
+  {
+    "id": "o3",
+    "name": "Bún chả",
+    "emojis": ["🍜", "🥩"],
+    "category": "eat-out"
+  },
+  {
+    "id": "o4",
+    "name": "Bún riêu cua",
+    "emojis": ["🍜", "🦀"],
+    "category": "eat-out"
+  }
 ]
