@@ -69,13 +69,6 @@ export default function MealList({
                 }
               >
                 <span className="meal-card__name">{meal.name}</span>
-                <span className="meal-card__emojis" aria-hidden>
-                  {meal.emojis.map((e, i) => (
-                    <span key={i} className="meal-card__emoji">
-                      {e}
-                    </span>
-                  ))}
-                </span>
               </button>
             </li>
           );
