@@ -1,23 +1,112 @@
 [
-  { "id": "r1",  "name": "Thịt lợn luộc + canh cà chua",          "emojis": ["🥩", "🍅"], "category": "rice" },
-  { "id": "r2",  "name": "Thịt lợn rán + dưa chuột",              "emojis": ["🥩", "🥒"], "category": "rice" },
-  { "id": "r3",  "name": "Thịt lợn nấu mặn ngọt + dưa chuột",    "emojis": ["🥩", "🥒"], "category": "rice" },
-  { "id": "r4",  "name": "Thịt lợn nấu ngọt + dưa chuột",        "emojis": ["🥩", "🥒"], "category": "rice" },
-  { "id": "r5",  "name": "Thịt lợn nấu mặn + dưa chuột",         "emojis": ["🥩", "🥒"], "category": "rice" },
-  { "id": "r6",  "name": "Thịt lợn xào sả ớt",                    "emojis": ["🥩", "🌶️"], "category": "rice" },
-  { "id": "r7",  "name": "Thịt lợn xào đậu cove",                 "emojis": ["🥩", "🌿"], "category": "rice" },
-  { "id": "r8",  "name": "Thịt bằm xào sốt cà chua",              "emojis": ["🥩", "🍅"], "category": "rice" },
-  { "id": "r9",  "name": "Má đùi gà xào cải chíp",                "emojis": ["🍗", "🥬"], "category": "rice" },
-  { "id": "r10", "name": "Má đùi gà nấu xáo + dưa chuột",        "emojis": ["🍗", "🥒"], "category": "rice" },
-  { "id": "r11", "name": "Trứng thịt rán + dưa chuột",            "emojis": ["🥚", "🥒"], "category": "rice" },
-  { "id": "r12", "name": "Trứng rán/ốp la + dưa chuột",           "emojis": ["🥚", "🥒"], "category": "rice" },
-  { "id": "r13", "name": "Đậu phụ rán + canh cà chua",            "emojis": ["🫘", "🍅"], "category": "rice" },
-  { "id": "r14", "name": "Đậu phụ sốt cà chua",                   "emojis": ["🫘", "🍅"], "category": "rice" },
-  { "id": "o1",  "name": "Khoai tây luộc + ức gà luộc",           "emojis": ["🥔", "🍗"], "category": "other" },
-  { "id": "o2",  "name": "Mì cay",                                 "emojis": ["🌶️", "🍜"], "category": "other" },
-  { "id": "o3",  "name": "Cơm rang đùi gà xối mắm",               "emojis": ["🍚", "🍗"], "category": "other" },
-  { "id": "o4",  "name": "Bún riêu",                               "emojis": ["🦀", "🍜"], "category": "other" },
-  { "id": "o5",  "name": "Mì tôm xúc xích",                       "emojis": ["🍜", "🌭"], "category": "other" },
-  { "id": "o6",  "name": "Cháo gói",                               "emojis": ["🍲"],       "category": "other" }
+  {
+    "id": "r1",
+    "name": "Thịt lợn luộc + canh cà chua",
+    "emojis": ["🥩", "🍅"],
+    "category": "rice"
+  },
+  {
+    "id": "r2",
+    "name": "Thịt lợn rán + dưa chuột",
+    "emojis": ["🥩", "🥒"],
+    "category": "rice"
+  },
+  {
+    "id": "r3",
+    "name": "Thịt lợn nấu mặn ngọt + dưa chuột",
+    "emojis": ["🥩", "🥒"],
+    "category": "rice"
+  },
+  {
+    "id": "r4",
+    "name": "Thịt lợn nấu ngọt + dưa chuột",
+    "emojis": ["🥩", "🥒"],
+    "category": "rice"
+  },
+  {
+    "id": "r5",
+    "name": "Thịt lợn nấu mặn + dưa chuột",
+    "emojis": ["🥩", "🥒"],
+    "category": "rice"
+  },
+  {
+    "id": "r6",
+    "name": "Thịt lợn xào sả ớt",
+    "emojis": ["🥩", "🌶️"],
+    "category": "rice"
+  },
+  {
+    "id": "r7",
+    "name": "Thịt lợn xào đậu cove",
+    "emojis": ["🥩", "🌿"],
+    "category": "rice"
+  },
+  {
+    "id": "r8",
+    "name": "Thịt bằm xào sốt cà chua",
+    "emojis": ["🥩", "🍅"],
+    "category": "rice"
+  },
+  {
+    "id": "r9",
+    "name": "Má đùi gà xào cải chíp",
+    "emojis": ["🍗", "🥬"],
+    "category": "rice"
+  },
+  {
+    "id": "r10",
+    "name": "Má đùi gà nấu xáo + dưa chuột",
+    "emojis": ["🍗", "🥒"],
+    "category": "rice"
+  },
+  {
+    "id": "r11",
+    "name": "Trứng thịt rán + dưa chuột",
+    "emojis": ["🥚", "🥒"],
+    "category": "rice"
+  },
+  {
+    "id": "r12",
+    "name": "Trứng rán/ốp la + dưa chuột",
+    "emojis": ["🥚", "🥒"],
+    "category": "rice"
+  },
+  {
+    "id": "r13",
+    "name": "Đậu phụ rán + canh cà chua",
+    "emojis": ["🍳", "🍅"],
+    "category": "rice"
+  },
+  {
+    "id": "r14",
+    "name": "Đậu phụ sốt cà chua",
+    "emojis": ["🥘", "🍅"],
+    "category": "rice"
+  },
+  {
+    "id": "o1",
+    "name": "Khoai tây luộc + ức gà luộc",
+    "emojis": ["🥔", "🍗"],
+    "category": "other"
+  },
+  { "id": "o2", "name": "Mì cay", "emojis": ["🌶️", "🍜"], "category": "other" },
+  {
+    "id": "o3",
+    "name": "Cơm rang đùi gà xối mắm",
+    "emojis": ["🍚", "🍗"],
+    "category": "other"
+  },
+  {
+    "id": "o4",
+    "name": "Bún riêu",
+    "emojis": ["🦀", "🍜"],
+    "category": "other"
+  },
+  {
+    "id": "o5",
+    "name": "Mì tôm xúc xích",
+    "emojis": ["🍜", "🌭"],
+    "category": "other"
+  },
+  { "id": "o6", "name": "Cháo gói", "emojis": ["🍲"], "category": "other" }
 ]
-
