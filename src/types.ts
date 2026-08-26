@@ -1,4 +1,4 @@
-export type MealCategory = "home" | "eat-out";
+export type MealCategory = "rice" | "other";
 
 export interface Meal {
   id: string;

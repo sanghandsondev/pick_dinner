@@ -32,21 +32,21 @@ export default function MealList({
           <button
             type="button"
             role="tab"
-            aria-selected={category === "home"}
-            className={`meal-tab${category === "home" ? " meal-tab--active" : ""}`}
-            onClick={() => onChangeCategory("home")}
+            aria-selected={category === "rice"}
+            className={`meal-tab${category === "rice" ? " meal-tab--active" : ""}`}
+            onClick={() => onChangeCategory("rice")}
           >
-            <span className="meal-tab__label">Home</span>
+            <span className="meal-tab__label">🍚 Rice</span>
             <span className="meal-tab__count">{homeCount}</span>
           </button>
           <button
             type="button"
             role="tab"
-            aria-selected={category === "eat-out"}
-            className={`meal-tab${category === "eat-out" ? " meal-tab--active" : ""}`}
-            onClick={() => onChangeCategory("eat-out")}
+            aria-selected={category === "other"}
+            className={`meal-tab${category === "other" ? " meal-tab--active" : ""}`}
+            onClick={() => onChangeCategory("other")}
           >
-            <span className="meal-tab__label">Eat out</span>
+            <span className="meal-tab__label">Other</span>
             <span className="meal-tab__count">{eatOutCount}</span>
           </button>
         </div>

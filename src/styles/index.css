@@ -342,19 +342,12 @@ button:disabled {
 }
 
 .meal-card--excluded {
-  background: color-mix(in srgb, #fee2e2 55%, var(--surface));
-  border-color: color-mix(in srgb, #fca5a5 60%, transparent);
-  opacity: 0.55;
+  opacity: 0.38;
+  filter: grayscale(0.4);
 }
 
 .meal-card--excluded .meal-card__name {
-  text-decoration: line-through;
-  text-decoration-color: color-mix(in srgb, #ef4444 70%, transparent);
   color: var(--ink-500);
-}
-
-.meal-card--excluded .meal-card__emojis {
-  filter: grayscale(0.75);
 }
 
 .meal-card__name {

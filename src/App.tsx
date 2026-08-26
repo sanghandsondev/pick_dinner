@@ -11,7 +11,7 @@ const MEALS: Meal[] = mealsData as Meal[];
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [dealMeal, setDealMeal] = useState<Meal | null>(null);
-  const [category, setCategory] = useState<MealCategory>("home");
+  const [category, setCategory] = useState<MealCategory>("rice");
   const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
 
   const today = useMemo(() => new Date(), []);
@@ -71,8 +71,8 @@ export default function App() {
               onToggle={toggleExclude}
               category={category}
               onChangeCategory={setCategory}
-              homeCount={MEALS.filter((m) => m.category === "home").length}
-              eatOutCount={MEALS.filter((m) => m.category === "eat-out").length}
+              homeCount={MEALS.filter((m) => m.category === "rice").length}
+              eatOutCount={MEALS.filter((m) => m.category === "other").length}
             />
           </main>
           <PickDinnerButton
