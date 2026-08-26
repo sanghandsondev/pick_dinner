@@ -1,0 +1,582 @@
+/* ===== Design tokens ===== */
+:root {
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+
+  --ink-900: #0f172a;
+  --ink-700: #334155;
+  --ink-500: #64748b;
+  --ink-300: #cbd5e1;
+  --ink-100: #f1f5f9;
+
+  --bg: #f5f8ff;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 24px -8px rgba(37, 99, 235, 0.25),
+    0 2px 6px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 24px 60px -20px rgba(37, 99, 235, 0.45),
+    0 8px 20px -10px rgba(15, 23, 42, 0.15);
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* ===== Reset nhẹ ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink-900);
+  background:
+    radial-gradient(
+      1200px 600px at 10% -10%,
+      var(--blue-100) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 100% 0%,
+      #e0ecff 0%,
+      transparent 55%
+    ),
+    var(--bg);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* ===== App shell ===== */
+.app-shell {
+  min-height: 100dvh;
+  padding-top: calc(var(--safe-top) + 12px);
+  padding-left: calc(var(--safe-left) + 16px);
+  padding-right: calc(var(--safe-right) + 16px);
+  /* để nội dung không bị nút CTA che */
+  padding-bottom: calc(var(--safe-bottom) + 140px);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== Date header ===== */
+.date-header {
+  padding: 8px 4px 0;
+}
+
+.date-header__eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--blue-600);
+  text-transform: uppercase;
+}
+
+.date-header__title {
+  margin: 4px 0 8px;
+  font-size: clamp(28px, 7vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--blue-700), var(--blue-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.date-header__date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink-700);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.date-header__weekday {
+  color: var(--blue-700);
+  font-weight: 600;
+}
+
+.date-header__dot {
+  color: var(--ink-300);
+}
+
+/* ===== Deal banner ===== */
+.deal-banner {
+  position: relative;
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
+  color: white;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: pop 0.4s var(--ease-smooth);
+}
+
+.deal-banner__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.deal-banner__meal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.deal-banner__emoji {
+  font-size: 28px;
+}
+
+.deal-banner__reset {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s var(--ease-smooth);
+}
+
+.deal-banner__reset:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ===== Meal list ===== */
+.meal-list {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.meal-list__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.meal-list__header h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.meal-list__count {
+  font-size: 13px;
+  color: var(--ink-500);
+  font-weight: 500;
+}
+
+.meal-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meal-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px;
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  border: 1px solid transparent;
+  transition:
+    background 0.2s var(--ease-smooth),
+    border-color 0.2s var(--ease-smooth),
+    transform 0.2s var(--ease-smooth);
+}
+
+.meal-card--active {
+  background: var(--blue-50);
+  border-color: var(--blue-200);
+  transform: translateY(-1px);
+}
+
+.meal-card__emoji {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  flex: none;
+}
+
+.meal-card__name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-900);
+}
+
+.meal-card__badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--blue-600);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Pick CTA (floating) ===== */
+.pick-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px calc(var(--safe-right) + 20px)
+    calc(var(--safe-bottom) + 20px) calc(var(--safe-left) + 20px);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(245, 248, 255, 0.95) 40%,
+    rgba(245, 248, 255, 0)
+  );
+}
+
+.pick-cta__btn {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 480px;
+  padding: 18px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow:
+    0 20px 40px -14px rgba(37, 99, 235, 0.65),
+    0 6px 14px -6px rgba(37, 99, 235, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition:
+    transform 0.2s var(--ease-smooth),
+    box-shadow 0.2s var(--ease-smooth),
+    filter 0.2s var(--ease-smooth);
+}
+
+.pick-cta__btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.pick-cta__btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.99);
+}
+
+.pick-cta__icon {
+  font-size: 20px;
+}
+
+.pick-cta__btn--disabled,
+.pick-cta__btn:disabled {
+  filter: grayscale(0.7);
+  opacity: 0.45;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ===== Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px calc(var(--safe-right) + 16px)
+    calc(var(--safe-bottom) + 20px) calc(var(--safe-left) + 16px);
+  z-index: 50;
+  animation: fadeIn 0.25s var(--ease-smooth);
+}
+
+@media (min-height: 640px) {
+  .modal-backdrop {
+    align-items: center;
+  }
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px 20px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideUp 0.35s var(--ease-smooth);
+}
+
+.modal-card__eyebrow {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+}
+
+.modal-card__stage {
+  position: relative;
+  min-height: 180px;
+  padding: 16px 12px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--blue-50), var(--surface));
+  border: 1px solid var(--blue-100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.modal-card__emoji {
+  font-size: 56px;
+  line-height: 1;
+  filter: drop-shadow(0 6px 14px rgba(37, 99, 235, 0.25));
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.modal-card--spinning .modal-card__emoji {
+  animation: wobble 0.6s ease-in-out infinite;
+}
+
+.modal-card__meal {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink-900);
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  line-height: 1.25;
+  transition: transform 0.2s var(--ease-smooth);
+}
+
+.modal-card__meal--rolling {
+  animation: rollIn 0.09s ease-out;
+}
+
+.modal-card__spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid var(--blue-100);
+  border-top-color: var(--blue-600);
+  animation: spin 0.8s linear infinite;
+}
+
+.modal-card__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.modal-card__actions .btn--primary {
+  grid-column: 1 / -1;
+}
+
+.btn {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  transition:
+    background 0.2s var(--ease-smooth),
+    color 0.2s var(--ease-smooth),
+    transform 0.15s var(--ease-smooth),
+    opacity 0.2s var(--ease-smooth);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn--secondary {
+  background: var(--blue-50);
+  color: var(--blue-700);
+  border: 1px solid var(--blue-100);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink-500);
+  border: 1px solid var(--ink-100);
+}
+
+/* ===== Keyframes ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes rollIn {
+  from {
+    opacity: 0.2;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Small screens tuning ===== */
+@media (max-width: 380px) {
+  .date-header__title {
+    font-size: 26px;
+  }
+  .modal-card__meal {
+    font-size: 19px;
+  }
+  .pick-cta__btn {
+    font-size: 16px;
+    padding: 16px 20px;
+  }
+}

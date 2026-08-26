@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "vscode-edge-devtools.debug",
+      "request": "launch",
+      "name": "Preview iPhone 15 (Edge DevTools)",
+      "url": "http://localhost:5173/pick_dinner/",
+      "preSourceMapPathOverrides": {
+        "webpack:///./src/*": "${workspaceFolder}/src/*"
+      },
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${workspaceFolder}/src/*"
+      }
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Chrome/Edge attach to Vite",
+      "url": "http://localhost:5173/pick_dinner/",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "ms-edgedevtools.vscode-edge-devtools",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
