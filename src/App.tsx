@@ -7,6 +7,7 @@ import PickDinnerButton from "./components/PickDinnerButton";
 import PickDinnerModal from "./components/PickDinnerModal";
 import HistoryModal from "./components/HistoryModal";
 import { usePickHistory, type HistoryEntry } from "./hooks/usePickHistory";
+import { useToday } from "./hooks/useToday";
 
 const MEALS: Meal[] = mealsData as Meal[];
 
@@ -34,7 +35,7 @@ export default function App() {
   const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
   const { history, addEntry, clearToday } = usePickHistory();
 
-  const today = useMemo(() => new Date(), []);
+  const today = useToday();
 
   // Nếu entry lịch sử mới nhất có ngày = hôm nay → đã deal hôm nay.
   const todayEntry = useMemo(() => {
