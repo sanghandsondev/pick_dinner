@@ -132,7 +132,6 @@ export default function MealsManagerModal({
             {shown.map((meal, idx) => {
               const isEditing = editingId === meal.id;
               const isFirst = idx === 0;
-              const isLast = idx === shown.length - 1;
               return (
                 <li key={meal.id} className="manager__row">
                   {isEditing ? (
@@ -166,28 +165,16 @@ export default function MealsManagerModal({
                     </button>
                   )}
 
-                  <div className="manager__reorder" aria-hidden={isEditing}>
-                    <button
-                      type="button"
-                      className="manager__move"
-                      onClick={() => onMove(meal.id, -1)}
-                      disabled={isFirst || isEditing}
-                      aria-label={`Move ${meal.name} up`}
-                      title="Move up"
-                    >
-                      ▲
-                    </button>
-                    <button
-                      type="button"
-                      className="manager__move"
-                      onClick={() => onMove(meal.id, 1)}
-                      disabled={isLast || isEditing}
-                      aria-label={`Move ${meal.name} down`}
-                      title="Move down"
-                    >
-                      ▼
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className="manager__move"
+                    onClick={() => onMove(meal.id, -1)}
+                    disabled={isFirst || isEditing}
+                    aria-label={`Move ${meal.name} up`}
+                    title="Move up"
+                  >
+                    ▲
+                  </button>
 
                   <button
                     type="button"

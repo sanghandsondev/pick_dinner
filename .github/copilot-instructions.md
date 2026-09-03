@@ -26,8 +26,18 @@ Tài liệu này là single source of truth cho dự án. Mọi thay đổi code
 - Model:
   ```ts
   type MealCategory = "rice" | "other";
-  interface Meal { id: string; name: string; category: MealCategory }
-  interface HistoryEntry { id: string; mealId: string; mealName: string; category: MealCategory; dealtAt: string /* ISO */ }
+  interface Meal {
+    id: string;
+    name: string;
+    category: MealCategory;
+  }
+  interface HistoryEntry {
+    id: string;
+    mealId: string;
+    mealName: string;
+    category: MealCategory;
+    dealtAt: string; /* ISO */
+  }
   ```
 - **KHÔNG** có field `emoji` per meal (đã bỏ). Emoji chỉ dùng trang trí ở UI (🍚 tab, 🕒 icon, v.v.).
 
@@ -132,6 +142,7 @@ scripts/gen-icons.mjs
 ## 12. Định nghĩa "Xong"
 
 Một thay đổi được coi là hoàn thành khi:
+
 1. `npm run build` pass, không lỗi TypeScript.
 2. UI trên iPhone 15 (393×852) không tràn, không đè Dynamic Island, CTA không bị home indicator che.
 3. Các luồng chính vẫn hoạt động đúng: Pick → Deal → disable + deal hero, Edit CRUD + reorder, History + Clear Today, sang ngày tự reset.
