@@ -132,17 +132,6 @@ export default function PickDinnerModal({
           >
             {shownMeal?.name ?? "—"}
           </div>
-          <div className="modal-card__emojis" aria-hidden>
-            {spinning ? (
-              <span className="modal-card__emoji">🎰</span>
-            ) : (
-              shownMeal?.emojis.map((e, i) => (
-                <span key={i} className="modal-card__emoji">
-                  {e}
-                </span>
-              ))
-            )}
-          </div>
           {spinning && <div className="modal-card__spinner" aria-hidden />}
         </div>
 

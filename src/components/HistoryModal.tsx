@@ -111,11 +111,6 @@ export default function HistoryModal({
                       <span>{time}</span>
                     </div>
                   </div>
-                  <div className="history-item__emojis" aria-hidden>
-                    {entry.emojis.map((e, i) => (
-                      <span key={i}>{e}</span>
-                    ))}
-                  </div>
                 </li>
               );
             })}

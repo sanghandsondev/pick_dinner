@@ -5,7 +5,6 @@ export interface HistoryEntry {
   id: string;
   mealId: string;
   mealName: string;
-  emojis: string[];
   category: MealCategory;
   dealtAt: string; // ISO string
 }
@@ -42,7 +41,6 @@ export function usePickHistory() {
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       mealId: meal.id,
       mealName: meal.name,
-      emojis: meal.emojis,
       category: meal.category,
       dealtAt: new Date().toISOString(),
     };

@@ -1,15 +1,14 @@
 import { useMemo, useState } from "react";
-import mealsData from "./data/meals.json";
 import type { Meal, MealCategory } from "./types";
 import DateHeader from "./components/DateHeader";
 import MealList from "./components/MealList";
 import PickDinnerButton from "./components/PickDinnerButton";
 import PickDinnerModal from "./components/PickDinnerModal";
 import HistoryModal from "./components/HistoryModal";
+import MealsManagerModal from "./components/MealsManagerModal";
 import { usePickHistory, type HistoryEntry } from "./hooks/usePickHistory";
 import { useToday } from "./hooks/useToday";
-
-const MEALS: Meal[] = mealsData as Meal[];
+import { useMeals } from "./hooks/useMeals";
 
 function isSameLocalDay(a: Date, b: Date): boolean {
   return (
@@ -23,7 +22,6 @@ function entryToMeal(entry: HistoryEntry): Meal {
   return {
     id: entry.mealId,
     name: entry.mealName,
-    emojis: entry.emojis,
     category: entry.category,
   };
 }
@@ -31,9 +29,11 @@ function entryToMeal(entry: HistoryEntry): Meal {
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [managerOpen, setManagerOpen] = useState(false);
   const [category, setCategory] = useState<MealCategory>("rice");
   const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
   const { history, addEntry, clearToday } = usePickHistory();
+  const { meals, addMeal, updateMeal, deleteMeal } = useMeals();
 
   const today = useToday();
 
@@ -50,14 +50,23 @@ export default function App() {
   const dealt = dealMeal !== null;
 
   const mealsByCategory = useMemo(
-    () => MEALS.filter((m) => m.category === category),
-    [category],
+    () => meals.filter((m) => m.category === category),
+    [meals, category],
   );
 
   // Pool để random: theo category hiện tại, loại bỏ các món bị exclude.
   const pickPool = useMemo(
     () => mealsByCategory.filter((m) => !excludedIds.has(m.id)),
     [mealsByCategory, excludedIds],
+  );
+
+  const riceCount = useMemo(
+    () => meals.filter((m) => m.category === "rice").length,
+    [meals],
+  );
+  const otherCount = useMemo(
+    () => meals.filter((m) => m.category === "other").length,
+    [meals],
   );
 
   const openModal = () => {
@@ -86,17 +95,11 @@ export default function App() {
           date={today}
           historyCount={history.length}
           onOpenHistory={() => setHistoryOpen(true)}
+          onOpenManager={() => setManagerOpen(true)}
         />
         {dealt ? (
           <section className="deal-hero" aria-live="polite">
             <div className="deal-hero__name">{dealMeal?.name}</div>
-            <div className="deal-hero__emojis" aria-hidden>
-              {dealMeal?.emojis.map((e, i) => (
-                <span key={i} className="deal-hero__emoji">
-                  {e}
-                </span>
-              ))}
-            </div>
           </section>
         ) : (
           <MealList
@@ -105,8 +108,8 @@ export default function App() {
             onToggle={toggleExclude}
             category={category}
             onChangeCategory={setCategory}
-            homeCount={MEALS.filter((m) => m.category === "rice").length}
-            eatOutCount={MEALS.filter((m) => m.category === "other").length}
+            homeCount={riceCount}
+            eatOutCount={otherCount}
           />
         )}
       </main>
@@ -128,6 +131,15 @@ export default function App() {
         onClose={() => setHistoryOpen(false)}
         onClearToday={clearToday}
         hasTodayEntry={dealt}
+      />
+
+      <MealsManagerModal
+        open={managerOpen}
+        meals={meals}
+        onClose={() => setManagerOpen(false)}
+        onAdd={addMeal}
+        onUpdate={updateMeal}
+        onDelete={deleteMeal}
       />
     </div>
   );
