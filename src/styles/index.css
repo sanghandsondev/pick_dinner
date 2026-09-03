@@ -362,6 +362,16 @@ button:disabled {
   color: var(--blue-700);
 }
 
+.meal-list__hint {
+  flex: none;
+  margin: 4px 6px 6px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ink-500);
+  font-weight: 500;
+}
+
 .meal-list__items {
   flex: 1;
   min-height: 0;
@@ -885,7 +895,8 @@ button:disabled {
   border-radius: 12px;
   border: 1px solid var(--ink-300);
   background: var(--surface);
-  font-size: 15px;
+  /* 16px là ngưỡng để iOS Safari không auto-zoom khi focus input */
+  font-size: 16px;
   font-family: inherit;
   color: var(--ink-900);
   outline: none;
@@ -903,9 +914,48 @@ button:disabled {
   padding: 6px 10px;
   border-radius: 10px;
   font-weight: 500;
+  font-size: 16px;
 }
 
-.manager__move,
+.manager__reorder {
+  flex: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.manager__move {
+  flex: none;
+  width: 28px;
+  height: 22px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--ink-500);
+  background: var(--surface);
+  transition:
+    background 0.2s var(--ease-smooth),
+    color 0.2s var(--ease-smooth),
+    transform 0.15s var(--ease-smooth),
+    opacity 0.2s var(--ease-smooth);
+}
+
+.manager__move:hover:not(:disabled) {
+  background: var(--blue-50);
+  color: var(--blue-700);
+}
+
+.manager__move:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.manager__move:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .manager__delete {
   flex: none;
   width: 32px;
@@ -924,19 +974,18 @@ button:disabled {
     transform 0.15s var(--ease-smooth);
 }
 
-.manager__move:hover {
-  background: var(--blue-50);
-  color: var(--blue-700);
-}
-
-.manager__delete:hover {
+.manager__delete:hover:not(:disabled) {
   background: #fee2e2;
   color: #b91c1c;
 }
 
-.manager__move:active,
-.manager__delete:active {
+.manager__delete:active:not(:disabled) {
   transform: scale(0.9);
+}
+
+.manager__delete:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .manager__empty {

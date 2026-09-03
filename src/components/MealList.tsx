@@ -52,6 +52,10 @@ export default function MealList({
         </div>
       </div>
 
+      <p className="meal-list__hint">
+        Tap a meal to temporarily exclude it from tonight's random pick.
+      </p>
+
       <ul className="meal-list__items">
         {meals.map((meal) => {
           const excluded = excludedIds.has(meal.id);

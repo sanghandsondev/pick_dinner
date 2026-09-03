@@ -84,5 +84,35 @@ export function useMeals() {
     setMeals((prev) => prev.filter((m) => m.id !== id));
   }, []);
 
-  return { meals, addMeal, updateMeal, deleteMeal };
+  // Đổi thứ tự 2 món trong cùng 1 category. delta = -1 (lên), +1 (xuống).
+  const moveMeal = useCallback((id: string, delta: -1 | 1) => {
+    setMeals((prev) => {
+      const idx = prev.findIndex((m) => m.id === id);
+      if (idx === -1) return prev;
+      const cat = prev[idx].category;
+      // Tìm neighbor gần nhất cùng category theo hướng delta.
+      let neighborIdx = -1;
+      if (delta === -1) {
+        for (let i = idx - 1; i >= 0; i--) {
+          if (prev[i].category === cat) {
+            neighborIdx = i;
+            break;
+          }
+        }
+      } else {
+        for (let i = idx + 1; i < prev.length; i++) {
+          if (prev[i].category === cat) {
+            neighborIdx = i;
+            break;
+          }
+        }
+      }
+      if (neighborIdx === -1) return prev;
+      const next = prev.slice();
+      [next[idx], next[neighborIdx]] = [next[neighborIdx], next[idx]];
+      return next;
+    });
+  }, []);
+
+  return { meals, addMeal, updateMeal, deleteMeal, moveMeal };
 }

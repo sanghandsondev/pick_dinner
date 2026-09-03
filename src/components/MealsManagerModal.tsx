@@ -6,11 +6,9 @@ interface MealsManagerModalProps {
   meals: Meal[];
   onClose: () => void;
   onAdd: (name: string, category: MealCategory) => void;
-  onUpdate: (
-    id: string,
-    patch: { name?: string; category?: MealCategory },
-  ) => void;
+  onUpdate: (id: string, patch: { name?: string }) => void;
   onDelete: (id: string) => void;
+  onMove: (id: string, delta: -1 | 1) => void;
 }
 
 export default function MealsManagerModal({
@@ -20,6 +18,7 @@ export default function MealsManagerModal({
   onAdd,
   onUpdate,
   onDelete,
+  onMove,
 }: MealsManagerModalProps) {
   const [tab, setTab] = useState<MealCategory>("rice");
   const [newName, setNewName] = useState("");
@@ -130,9 +129,10 @@ export default function MealsManagerModal({
           </div>
         ) : (
           <ul className="manager__list">
-            {shown.map((meal) => {
+            {shown.map((meal, idx) => {
               const isEditing = editingId === meal.id;
-              const otherCat: MealCategory = tab === "rice" ? "other" : "rice";
+              const isFirst = idx === 0;
+              const isLast = idx === shown.length - 1;
               return (
                 <li key={meal.id} className="manager__row">
                   {isEditing ? (
@@ -166,15 +166,28 @@ export default function MealsManagerModal({
                     </button>
                   )}
 
-                  <button
-                    type="button"
-                    className="manager__move"
-                    onClick={() => onUpdate(meal.id, { category: otherCat })}
-                    title={`Move to ${otherCat === "rice" ? "Rice" : "Other"}`}
-                    aria-label={`Move to ${otherCat === "rice" ? "Rice" : "Other"}`}
-                  >
-                    ⇄
-                  </button>
+                  <div className="manager__reorder" aria-hidden={isEditing}>
+                    <button
+                      type="button"
+                      className="manager__move"
+                      onClick={() => onMove(meal.id, -1)}
+                      disabled={isFirst || isEditing}
+                      aria-label={`Move ${meal.name} up`}
+                      title="Move up"
+                    >
+                      ▲
+                    </button>
+                    <button
+                      type="button"
+                      className="manager__move"
+                      onClick={() => onMove(meal.id, 1)}
+                      disabled={isLast || isEditing}
+                      aria-label={`Move ${meal.name} down`}
+                      title="Move down"
+                    >
+                      ▼
+                    </button>
+                  </div>
 
                   <button
                     type="button"
@@ -182,6 +195,7 @@ export default function MealsManagerModal({
                     onClick={() => {
                       if (confirm(`Delete "${meal.name}"?`)) onDelete(meal.id);
                     }}
+                    disabled={isEditing}
                     aria-label={`Delete ${meal.name}`}
                   >
                     ✕

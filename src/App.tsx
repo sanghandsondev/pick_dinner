@@ -33,7 +33,7 @@ export default function App() {
   const [category, setCategory] = useState<MealCategory>("rice");
   const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
   const { history, addEntry, clearToday } = usePickHistory();
-  const { meals, addMeal, updateMeal, deleteMeal } = useMeals();
+  const { meals, addMeal, updateMeal, deleteMeal, moveMeal } = useMeals();
 
   const today = useToday();
 
@@ -140,6 +140,7 @@ export default function App() {
         onAdd={addMeal}
         onUpdate={updateMeal}
         onDelete={deleteMeal}
+        onMove={moveMeal}
       />
     </div>
   );
